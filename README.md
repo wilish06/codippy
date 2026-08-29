@@ -33,7 +33,7 @@ Usan el modelo de **Apple Foundation Models** (requiere Apple Intelligence activ
 2. Renómbralo a `postalcodes_ES.tsv` (patrón: `postalcodes_<código ISO de 2 letras>.tsv`).
 3. Cópialo en `codippy/Datasets/` — con los grupos sincronizados de Xcode se incluye solo en el bundle.
 
-Al arrancar, la app lo detecta automáticamente: el país aparece marcado como **(offline)** en el selector y todas sus búsquedas (código y ciudad) dejan de usar la red. Hay uno de ejemplo: `postalcodes_AD.tsv` (Andorra).
+Al arrancar, la app lo detecta automáticamente: el país aparece marcado como **(offline)** en el selector y todas sus búsquedas (código y ciudad) dejan de usar la red. Vienen incluidos España (`postalcodes_ES.tsv`) y Andorra (`postalcodes_AD.tsv`).
 
 Formatos aceptados (extensiones `.tsv`, `.csv` o `.txt`):
 

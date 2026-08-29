@@ -17,9 +17,10 @@ struct SearchView: View {
     @State private var showSmartSearch = false
     @State private var showScanner = false
     @State private var completerService = SearchCompleterService()
+    @State private var path = NavigationPath()
 
     var body: some View {
-        NavigationStack {
+        NavigationStack(path: $path) {
             ZStack {
                 AppBackground()
                 if isSearching || isLocating {
@@ -57,6 +58,16 @@ struct SearchView: View {
             }
             .task(id: "\(query)|\(selectedCountry)") {
                 await debouncedSearch()
+            }
+            // Modo demo para capturas de App Store, vía argumentos de lanzamiento
+            // (-demoQuery, -demoOpenFirst, -demoSmartText). Sin efecto en uso normal.
+            .task {
+                if let demo = UserDefaults.standard.string(forKey: "demoQuery"), query.isEmpty {
+                    query = demo
+                }
+                if UserDefaults.standard.string(forKey: "demoSmartText") != nil {
+                    showSmartSearch = true
+                }
             }
             .onChange(of: query, initial: false) {
                 updateSuggestions()
@@ -331,6 +342,7 @@ struct SearchView: View {
     }
 
     private func updateSuggestions() {
+        guard UserDefaults.standard.string(forKey: "demoQuery") == nil else { return }
         let text = query.trimmingCharacters(in: .whitespacesAndNewlines)
         // Para códigos postales puros el autocompletado solo mete ruido.
         if text.allSatisfy({ $0.isNumber || $0 == " " || $0 == "-" }) {
@@ -359,6 +371,9 @@ struct SearchView: View {
             results = found
             errorMessage = nil
             isSearching = false
+            if UserDefaults.standard.bool(forKey: "demoOpenFirst"), let first = found.first {
+                path.append(first)
+            }
             await resolveNeighborhoods()
         } catch is CancellationError {
             // Nueva búsqueda en curso.

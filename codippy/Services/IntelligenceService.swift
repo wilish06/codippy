@@ -73,15 +73,18 @@ enum IntelligenceService {
         do {
             let session = LanguageModelSession(instructions: """
                 Escribes descripciones breves de lugares para una app de códigos \
-                postales. Responde en español, en 2 o 3 frases, sin listas ni \
-                títulos. Cuenta qué tipo de zona es y algo característico o \
-                interesante. Si no conoces el lugar, describe la región de forma \
-                general sin inventar detalles concretos.
+                postales. Responde en español, en 2 o 3 frases, en texto plano: \
+                sin Markdown, sin asteriscos, sin listas ni títulos. Describe el \
+                lugar de forma general: qué tipo de sitio es y por qué se le conoce. \
+                No nombres barrios ni distritos, y no menciones monumentos o lugares \
+                concretos de los que no estés seguro.
                 """)
             let response = try await session.respond(
-                to: "Describe la zona del código postal \(place.postalCode) en \(location)."
+                to: "Describe brevemente: \(location)."
             )
-            let text = response.content.trimmingCharacters(in: .whitespacesAndNewlines)
+            let text = response.content
+                .replacingOccurrences(of: "**", with: "")
+                .trimmingCharacters(in: .whitespacesAndNewlines)
             return text.isEmpty ? nil : text
         } catch {
             return nil

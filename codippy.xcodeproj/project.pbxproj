@@ -86,9 +86,10 @@
 				};
 			};
 			buildConfigurationList = 2C34EBDC3042C9D5004423F8 /* Build configuration list for PBXProject "codippy" */;
-			developmentRegion = en;
+			developmentRegion = es;
 			hasScannedForEncodings = 0;
 			knownRegions = (
+				es,
 				en,
 				Base,
 			);

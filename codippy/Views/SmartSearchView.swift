@@ -45,7 +45,13 @@ struct SmartSearchView: View {
                     Button("Cancelar") { dismiss() }
                 }
             }
-            .onAppear { editorFocused = true }
+            .onAppear {
+                if let demo = UserDefaults.standard.string(forKey: "demoSmartText"), text.isEmpty {
+                    text = demo
+                } else {
+                    editorFocused = true
+                }
+            }
         }
         #if os(macOS)
         .frame(minWidth: 420, minHeight: 380)
