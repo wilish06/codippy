@@ -70,13 +70,16 @@ struct SearchView: View {
                 await debouncedSearch()
             }
             // Modo demo para capturas de App Store, vía argumentos de lanzamiento
-            // (-demoQuery, -demoOpenFirst, -demoSmartText). Sin efecto en uso normal.
+            // (-demoQuery, -demoOpenFirst, -demoSmartText, -demoOfflineSheet, -demoNoSplash). Sin efecto en uso normal.
             .task {
                 if let demo = UserDefaults.standard.string(forKey: "demoQuery"), query.isEmpty {
                     query = demo
                 }
                 if UserDefaults.standard.string(forKey: "demoSmartText") != nil {
                     showSmartSearch = true
+                }
+                if UserDefaults.standard.bool(forKey: "demoOfflineSheet") {
+                    showOfflineCountries = true
                 }
             }
             .onChange(of: query, initial: false) {
@@ -293,7 +296,13 @@ struct SearchView: View {
     }
 
     /// Resultados agrupados por barrio; los aún sin resolver van bajo la población.
+    /// Las poblaciones que coinciden exactamente con lo buscado van primero.
     private var groupedResults: [(title: String, places: [PostalPlace])] {
+        let needle = query.trimmingCharacters(in: .whitespacesAndNewlines)
+            .folding(options: [.diacriticInsensitive, .caseInsensitive], locale: nil)
+        func isExact(_ place: PostalPlace) -> Bool {
+            place.placeName.folding(options: [.diacriticInsensitive, .caseInsensitive], locale: nil) == needle
+        }
         let groups = Dictionary(grouping: results) { place in
             place.neighborhood ?? place.placeName
         }
@@ -301,7 +310,12 @@ struct SearchView: View {
             .map { title, places in
                 (title: title, places: places.sorted { $0.postalCode < $1.postalCode })
             }
-            .sorted { ($0.places.first?.postalCode ?? "") < ($1.places.first?.postalCode ?? "") }
+            .sorted { lhs, rhs in
+                let lhsExact = lhs.places.contains(where: isExact)
+                let rhsExact = rhs.places.contains(where: isExact)
+                if lhsExact != rhsExact { return lhsExact }
+                return (lhs.places.first?.postalCode ?? "") < (rhs.places.first?.postalCode ?? "")
+            }
     }
 
     private var countryName: String {
