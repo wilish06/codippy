@@ -516,6 +516,7 @@
 				INFOPLIST_FILE = "codippy-Info.plist";
 				INFOPLIST_KEY_CFBundleDisplayName = Codippy;
 				INFOPLIST_KEY_ITSAppUsesNonExemptEncryption = NO;
+				INFOPLIST_KEY_LSApplicationCategoryType = "public.app-category.utilities";
 				INFOPLIST_KEY_NSCameraUsageDescription = "La cámara se usa para escanear direcciones en sobres y etiquetas.";
 				INFOPLIST_KEY_NSLocationWhenInUseUsageDescription = "Se usa tu ubicación para mostrarte el código postal donde estás.";
 				"INFOPLIST_KEY_UIApplicationSceneManifest_Generation[sdk=iphoneos*]" = YES;
@@ -566,6 +567,7 @@
 				INFOPLIST_FILE = "codippy-Info.plist";
 				INFOPLIST_KEY_CFBundleDisplayName = Codippy;
 				INFOPLIST_KEY_ITSAppUsesNonExemptEncryption = NO;
+				INFOPLIST_KEY_LSApplicationCategoryType = "public.app-category.utilities";
 				INFOPLIST_KEY_NSCameraUsageDescription = "La cámara se usa para escanear direcciones en sobres y etiquetas.";
 				INFOPLIST_KEY_NSLocationWhenInUseUsageDescription = "Se usa tu ubicación para mostrarte el código postal donde estás.";
 				"INFOPLIST_KEY_UIApplicationSceneManifest_Generation[sdk=iphoneos*]" = YES;
