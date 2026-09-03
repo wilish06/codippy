@@ -78,7 +78,7 @@ struct CountryBadge: View {
 struct InfoRow: View {
     let icon: String
     let tint: Color
-    let label: String
+    let label: LocalizedStringKey
     let value: String
 
     var body: some View {

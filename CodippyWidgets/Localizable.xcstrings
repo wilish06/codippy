@@ -1,0 +1,196 @@
+{
+  "sourceLanguage": "es",
+  "strings": {
+    "%@ · %@": {
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "%1$@ · %2$@"
+          }
+        }
+      }
+    },
+    "%lld": {
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "%lld"
+          }
+        }
+      }
+    },
+    "Abre Codippy y permite la ubicación para ver tu código postal.": {
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Open Codippy and allow location access to see your postal code."
+          }
+        }
+      }
+    },
+    "El código postal del lugar donde estás.": {
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "The postal code of where you are right now."
+          }
+        }
+      }
+    },
+    "El servidor ha devuelto una respuesta inesperada.": {
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "The server returned an unexpected response."
+          }
+        }
+      }
+    },
+    "Ese código no tiene el formato de %@ (por ejemplo, %@).": {
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "That code does not match the format used in %1$@ (for example, %2$@)."
+          }
+        }
+      }
+    },
+    "Estás en": {
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "You are in"
+          }
+        }
+      }
+    },
+    "Favoritos": {
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Favorites"
+          }
+        }
+      }
+    },
+    "Marca códigos postales con la estrella en Codippy y aparecerán aquí.": {
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Star postal codes in Codippy and they will show up here."
+          }
+        }
+      }
+    },
+    "Mi código postal": {
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "My Postal Code"
+          }
+        }
+      }
+    },
+    "No se ha encontrado ningún resultado.": {
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "No results found."
+          }
+        }
+      }
+    },
+    "No se ha podido cargar la lista de países.": {
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "The list of countries could not be loaded."
+          }
+        }
+      }
+    },
+    "No se ha podido descargar. Inténtalo de nuevo.": {
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Download failed. Please try again."
+          }
+        }
+      }
+    },
+    "No se ha podido obtener tu ubicación.": {
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Your location could not be determined."
+          }
+        }
+      }
+    },
+    "Permiso de localización denegado. Actívalo en Ajustes.": {
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Location permission denied. Enable it in Settings."
+          }
+        }
+      }
+    },
+    "Sigue escribiendo: los códigos postales de %@ son como %@.": {
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Keep typing: postal codes in %1$@ look like %2$@."
+          }
+        }
+      }
+    },
+    "Sin conexión. Las búsquedas por calle y en países sin datos offline necesitan internet.": {
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "You are offline. Street searches and countries without offline data need an internet connection."
+          }
+        }
+      }
+    },
+    "Sin ubicación ahora mismo. Toca para buscar.": {
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "No location right now. Tap to search."
+          }
+        }
+      }
+    },
+    "Tus códigos postales guardados como favoritos.": {
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "The postal codes you saved as favorites."
+          }
+        }
+      }
+    }
+  },
+  "version": "1.0"
+}

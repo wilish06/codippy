@@ -3,6 +3,7 @@
 //  codippy
 //
 
+import CoreLocation
 import SwiftUI
 
 struct SearchView: View {
@@ -11,13 +12,18 @@ struct SearchView: View {
     @State private var query = ""
     @State private var results: [PostalPlace] = []
     @State private var errorMessage: String?
+    @State private var errorIsHint = false
     @State private var isSearching = false
     @State private var isLocating = false
     @State private var isResolvingNeighborhoods = false
     @State private var showSmartSearch = false
     @State private var showScanner = false
+    @State private var showOfflineCountries = false
+    @State private var smartTextToAnalyze: String?
     @State private var completerService = SearchCompleterService()
     @State private var path = NavigationPath()
+    @State private var router = AppRouter.shared
+    @State private var userLocation = UserLocation.shared
 
     var body: some View {
         NavigationStack(path: $path) {
@@ -48,10 +54,14 @@ struct SearchView: View {
                 }
             }
             .sheet(isPresented: $showSmartSearch) {
-                SmartSearchView { handleSmartResult($0) }
+                SmartSearchView(initialText: smartTextToAnalyze) { handleSmartResult($0) }
+                    .onDisappear { smartTextToAnalyze = nil }
             }
             .sheet(isPresented: $showScanner) {
                 ScanAddressView { handleSmartResult($0) }
+            }
+            .sheet(isPresented: $showOfflineCountries) {
+                OfflineCountriesView()
             }
             .navigationDestination(for: PostalPlace.self) { place in
                 PlaceDetailView(place: place)
@@ -71,6 +81,9 @@ struct SearchView: View {
             }
             .onChange(of: query, initial: false) {
                 updateSuggestions()
+            }
+            .onChange(of: router.pending, initial: true) {
+                consumePendingRoute()
             }
         }
     }
@@ -124,7 +137,7 @@ struct SearchView: View {
             }
 
             HStack(spacing: 8) {
-                ForEach(["28001", "Sevilla", "Gran Vía, Madrid"], id: \.self) { example in
+                ForEach(examples, id: \.self) { example in
                     Button(example) { query = example }
                         .font(.subheadline.weight(.medium))
                         .buttonStyle(.bordered)
@@ -157,11 +170,18 @@ struct SearchView: View {
         .padding(.top, 20)
     }
 
+    /// Ejemplos acordes al país: para España los clásicos, para el resto el formato del país.
+    private var examples: [String] {
+        if selectedCountry == "ES" { return ["28001", "Sevilla", "Gran Vía, Madrid"] }
+        if let format = PostalCodeFormat.format(for: selectedCountry) { return [format.example] }
+        return []
+    }
+
     private func errorCard(_ message: String) -> some View {
         HStack(spacing: 12) {
-            Image(systemName: "questionmark.circle.fill")
+            Image(systemName: errorIsHint ? "info.circle.fill" : "questionmark.circle.fill")
                 .font(.title3)
-                .foregroundStyle(.orange)
+                .foregroundStyle(errorIsHint ? .indigo : .orange)
             Text(message)
                 .font(.subheadline)
                 .foregroundStyle(.secondary)
@@ -193,7 +213,7 @@ struct SearchView: View {
                     ForEach(group.places) { place in
                         NavigationLink(value: place) {
                             HStack(spacing: 12) {
-                                PlaceRow(place: place)
+                                PlaceRow(place: place, distance: userLocation.distance(to: place))
                                 Image(systemName: "chevron.right")
                                     .font(.caption.weight(.bold))
                                     .foregroundStyle(.tertiary)
@@ -293,12 +313,22 @@ struct SearchView: View {
             Picker("País", selection: $selectedCountry) {
                 ForEach(repository.countries) { country in
                     Label {
-                        Text("\(country.name)\(country.isOffline ? " (offline)" : "")")
+                        if country.isOffline {
+                            Text("\(country.name) (offline)")
+                        } else {
+                            Text(country.name)
+                        }
                     } icon: {
                         Image(systemName: country.isOffline ? "arrow.down.circle.fill" : "globe")
                     }
                     .tag(country.code)
                 }
+            }
+            Divider()
+            Button {
+                showOfflineCountries = true
+            } label: {
+                Label("Países sin conexión…", systemImage: "square.and.arrow.down")
             }
         } label: {
             CountryBadge(code: selectedCountry)
@@ -332,10 +362,28 @@ struct SearchView: View {
 
     // MARK: - Acciones
 
+    /// Navegación pedida desde fuera (URL, Atajos, widget, extensión, servicio de macOS).
+    private func consumePendingRoute() {
+        guard let destination = router.pending else { return }
+        router.pending = nil
+        path = NavigationPath()
+        switch destination {
+        case let .search(text, country):
+            if let country, repository.supports(country: country) {
+                selectedCountry = country
+            }
+            query = text
+        case let .smartText(text):
+            smartTextToAnalyze = text
+            showSmartSearch = true
+        case .locate:
+            Task { await locate() }
+        }
+    }
+
     /// La consulta que devuelve la IA entra por el flujo de búsqueda normal.
     private func handleSmartResult(_ smart: SmartQuery) {
-        if let country = smart.countryCode,
-           repository.countries.contains(where: { $0.code == country }) {
+        if let country = smart.countryCode, repository.supports(country: country) {
             selectedCountry = country
         }
         query = smart.query
@@ -381,6 +429,7 @@ struct SearchView: View {
             isSearching = false
             guard !Task.isCancelled else { return }
             results = []
+            errorIsHint = (error as? PostalError)?.isHint ?? false
             errorMessage = error.localizedDescription
         }
     }
@@ -414,6 +463,7 @@ struct SearchView: View {
             }
         } catch {
             results = []
+            errorIsHint = false
             errorMessage = error.localizedDescription
         }
     }
@@ -421,6 +471,7 @@ struct SearchView: View {
 
 struct PlaceRow: View {
     let place: PostalPlace
+    var distance: CLLocationDistance? = nil
 
     var body: some View {
         HStack(spacing: 12) {
@@ -429,13 +480,18 @@ struct PlaceRow: View {
                 Text(place.street ?? place.placeName)
                     .font(.body.weight(.medium))
                     .foregroundStyle(.primary)
-                if let subtitle = place.street != nil ? place.placeName : (place.state.isEmpty ? nil : place.state) {
+                if let subtitle = place.street != nil ? place.placeName : place.regionLine {
                     Text(subtitle)
                         .font(.caption)
                         .foregroundStyle(.secondary)
                 }
             }
             Spacer(minLength: 0)
+            if let distance {
+                Text(UserLocation.formatted(distance))
+                    .font(.caption.monospacedDigit())
+                    .foregroundStyle(.secondary)
+            }
             CountryBadge(code: place.countryCode)
         }
     }

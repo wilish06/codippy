@@ -1,0 +1,936 @@
+{
+  "sourceLanguage": "es",
+  "strings": {
+    "%@ (offline)": {
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "%@ (offline)"
+          }
+        }
+      }
+    },
+    "%@ tiene %lld códigos postales; el primero es %@.": {
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "%1$@ has %2$lld postal codes; the first one is %3$@."
+          }
+        }
+      }
+    },
+    "%@ · %@": {
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "%1$@ · %2$@"
+          }
+        }
+      }
+    },
+    "%@ · %@ códigos": {
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "%1$@ · %2$@ codes"
+          }
+        }
+      }
+    },
+    "%lld": {
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "%lld"
+          }
+        }
+      }
+    },
+    "Abre Codippy y busca un código postal, ciudad o calle.": {
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Opens Codippy and searches for a postal code, city or street."
+          }
+        }
+      }
+    },
+    "Abrir Codippy": {
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Open Codippy"
+          }
+        }
+      }
+    },
+    "Abrir en Mapas": {
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Open in Maps"
+          }
+        }
+      }
+    },
+    "Ajustes…": {
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Settings…"
+          }
+        }
+      }
+    },
+    "Analizando…": {
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Analyzing…"
+          }
+        }
+      }
+    },
+    "Añadir a favoritos": {
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Add to Favorites"
+          }
+        }
+      }
+    },
+    "Barrio / distrito": {
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Neighborhood / district"
+          }
+        }
+      }
+    },
+    "Borrar recientes": {
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Clear Recents"
+          }
+        }
+      }
+    },
+    "Busca un lugar y devuelve su código postal como texto.": {
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Looks up a place and returns its postal code as text."
+          }
+        }
+      }
+    },
+    "Buscando…": {
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Searching…"
+          }
+        }
+      }
+    },
+    "Buscar": {
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Search"
+          }
+        }
+      }
+    },
+    "Buscar ${query} en Codippy": {
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Search ${query} in Codippy"
+          }
+        }
+      }
+    },
+    "Buscar con IA": {
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Search with AI"
+          }
+        }
+      }
+    },
+    "Buscar código postal": {
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Find Postal Code"
+          }
+        }
+      }
+    },
+    "Buscar en Codippy": {
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Search in Codippy"
+          }
+        }
+      }
+    },
+    "Búsqueda": {
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Query"
+          }
+        }
+      }
+    },
+    "Calle": {
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Street"
+          }
+        }
+      }
+    },
+    "Cancelar": {
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Cancel"
+          }
+        }
+      }
+    },
+    "Cargando lista…": {
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Loading list…"
+          }
+        }
+      }
+    },
+    "Ciudad o dirección": {
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "City or address"
+          }
+        }
+      }
+    },
+    "Codippy": {
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Codippy"
+          }
+        }
+      }
+    },
+    "Compartir": {
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Share"
+          }
+        }
+      }
+    },
+    "Coordenadas": {
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Coordinates"
+          }
+        }
+      }
+    },
+    "Copiar código": {
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Copy Code"
+          }
+        }
+      }
+    },
+    "Copiar dirección": {
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Copy Address"
+          }
+        }
+      }
+    },
+    "Código postal de ${query}": {
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Postal code of ${query}"
+          }
+        }
+      }
+    },
+    "Código postal, ciudad o calle": {
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Postal code, city or street"
+          }
+        }
+      }
+    },
+    "Códigos cercanos": {
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Nearby Codes"
+          }
+        }
+      }
+    },
+    "Descargado · %@ códigos": {
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Downloaded · %@ codes"
+          }
+        }
+      }
+    },
+    "Devuelve el código postal de tu ubicación actual.": {
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Returns the postal code of your current location."
+          }
+        }
+      }
+    },
+    "Disponibles para descargar": {
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Available to Download"
+          }
+        }
+      }
+    },
+    "Distancia desde ti": {
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Distance from you"
+          }
+        }
+      }
+    },
+    "El código postal de %@ es %@.": {
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "The postal code of %1$@ is %2$@."
+          }
+        }
+      }
+    },
+    "El servidor ha devuelto una respuesta inesperada.": {
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "The server returned an unexpected response."
+          }
+        }
+      }
+    },
+    "Elige una foto de un sobre, etiqueta o captura con una dirección y se leerá automáticamente.": {
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Pick a photo of an envelope, label or screenshot with an address and it will be read automatically."
+          }
+        }
+      }
+    },
+    "Encuentra cualquier código postal": {
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Find any postal code"
+          }
+        }
+      }
+    },
+    "Escanear": {
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Scan"
+          }
+        }
+      }
+    },
+    "Escanear dirección": {
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Scan Address"
+          }
+        }
+      }
+    },
+    "Escribe y pulsa Intro. Clic en un resultado para copiar el código.": {
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Type and press Return. Click a result to copy its code."
+          }
+        }
+      }
+    },
+    "Ese código no tiene el formato de %@ (por ejemplo, %@).": {
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "That code does not match the format used in %1$@ (for example, %2$@)."
+          }
+        }
+      }
+    },
+    "Estás en %@, %@.": {
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "You are in %1$@, %2$@."
+          }
+        }
+      }
+    },
+    "Favoritos": {
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Favorites"
+          }
+        }
+      }
+    },
+    "Foto": {
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Photo"
+          }
+        }
+      }
+    },
+    "Hecho": {
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Done"
+          }
+        }
+      }
+    },
+    "Historial": {
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "History"
+          }
+        }
+      }
+    },
+    "IA no disponible en este dispositivo; se buscará el texto tal cual.": {
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "AI is not available on this device; the text will be searched as is."
+          }
+        }
+      }
+    },
+    "Identificando barrios…": {
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Identifying neighborhoods…"
+          }
+        }
+      }
+    },
+    "Incluidos en la app": {
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Included in the App"
+          }
+        }
+      }
+    },
+    "La dirección se extrae con IA en tu dispositivo, sin conexión.": {
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "The address is extracted with on-device AI, no connection needed."
+          }
+        }
+      }
+    },
+    "Los países con datos descargados se buscan al instante y sin internet. Los datos son de GeoNames (CC BY 4.0).": {
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Countries with downloaded data are searched instantly and offline. Data comes from GeoNames (CC BY 4.0)."
+          }
+        }
+      }
+    },
+    "Mi código postal": {
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "My Postal Code"
+          }
+        }
+      }
+    },
+    "Mostrar Codippy en la barra de menús": {
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Show Codippy in the menu bar"
+          }
+        }
+      }
+    },
+    "No hay texto seleccionado.": {
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "No text selected."
+          }
+        }
+      }
+    },
+    "No se ha encontrado ningún resultado.": {
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "No results found."
+          }
+        }
+      }
+    },
+    "No se ha encontrado texto en la imagen.": {
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "No text was found in the image."
+          }
+        }
+      }
+    },
+    "No se ha podido cargar la lista de países.": {
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "The list of countries could not be loaded."
+          }
+        }
+      }
+    },
+    "No se ha podido descargar. Inténtalo de nuevo.": {
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Download failed. Please try again."
+          }
+        }
+      }
+    },
+    "No se ha podido leer la imagen.": {
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "The image could not be read."
+          }
+        }
+      }
+    },
+    "No se ha podido obtener tu ubicación.": {
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Your location could not be determined."
+          }
+        }
+      }
+    },
+    "Obtener código postal": {
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Get Postal Code"
+          }
+        }
+      }
+    },
+    "País": {
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Country"
+          }
+        }
+      }
+    },
+    "País (ISO, opcional)": {
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Country (ISO, optional)"
+          }
+        }
+      }
+    },
+    "Países sin conexión": {
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Offline Countries"
+          }
+        }
+      }
+    },
+    "Países sin conexión…": {
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Offline Countries…"
+          }
+        }
+      }
+    },
+    "Pega aquí un texto con una dirección…\n\n\"Te lo mando a Calle Serrano 21,\n3ºB, Madrid. ¡Gracias!\"": {
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Paste any text containing an address…\n\n\"Ship it to 21 Serrano Street,\n3rd floor, Madrid. Thanks!\""
+          }
+        }
+      }
+    },
+    "Pegar": {
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Paste"
+          }
+        }
+      }
+    },
+    "Pegar dirección": {
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Paste Address"
+          }
+        }
+      }
+    },
+    "Permiso de localización denegado. Actívalo en Ajustes.": {
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Location permission denied. Enable it in Settings."
+          }
+        }
+      }
+    },
+    "Población": {
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Town / city"
+          }
+        }
+      }
+    },
+    "Por código, ciudad o calle · %@": {
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "By code, city or street · %@"
+          }
+        }
+      }
+    },
+    "Provincia": {
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Province"
+          }
+        }
+      }
+    },
+    "Quitar de favoritos": {
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Remove from Favorites"
+          }
+        }
+      }
+    },
+    "Recientes": {
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Recents"
+          }
+        }
+      }
+    },
+    "Región": {
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Region"
+          }
+        }
+      }
+    },
+    "Reintentar": {
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Retry"
+          }
+        }
+      }
+    },
+    "Salir": {
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Quit"
+          }
+        }
+      }
+    },
+    "Selecciona una dirección en cualquier app y usa el menú Servicios para buscarla con Codippy.": {
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Select an address in any app and use the Services menu to look it up with Codippy."
+          }
+        }
+      }
+    },
+    "Sigue escribiendo: los códigos postales de %@ son como %@.": {
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Keep typing: postal codes in %1$@ look like %2$@."
+          }
+        }
+      }
+    },
+    "Sin conexión. Las búsquedas por calle y en países sin datos offline necesitan internet.": {
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "You are offline. Street searches and countries without offline data need an internet connection."
+          }
+        }
+      }
+    },
+    "Toca el texto de la dirección para capturarlo": {
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Tap the address text to capture it"
+          }
+        }
+      }
+    },
+    "Todavía nada": {
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Nothing yet"
+          }
+        }
+      }
+    },
+    "Tus búsquedas y favoritos aparecerán aquí.": {
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Your searches and favorites will appear here."
+          }
+        }
+      }
+    },
+    "¡Copiada!": {
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Copied!"
+          }
+        }
+      }
+    },
+    "¡Copiado!": {
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Copied!"
+          }
+        }
+      }
+    },
+    "¿Buscabas…?": {
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Did you mean…?"
+          }
+        }
+      }
+    },
+    "¿De qué ciudad o dirección quieres el código postal?": {
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Which city or address do you want the postal code for?"
+          }
+        }
+      }
+    },
+    "¿Dónde estoy?": {
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Where am I?"
+          }
+        }
+      }
+    },
+    "¿Qué código postal, ciudad o calle quieres buscar?": {
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Which postal code, city or street do you want to search for?"
+          }
+        }
+      }
+    }
+  },
+  "version": "1.0"
+}

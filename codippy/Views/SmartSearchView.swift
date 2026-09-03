@@ -9,6 +9,8 @@
 import SwiftUI
 
 struct SmartSearchView: View {
+    /// Texto que llega ya escrito (extensión de compartir, servicio de macOS, URL).
+    var initialText: String? = nil
     let onResult: (SmartQuery) -> Void
 
     @Environment(\.dismiss) private var dismiss
@@ -46,6 +48,9 @@ struct SmartSearchView: View {
                 }
             }
             .onAppear {
+                if let initialText, text.isEmpty {
+                    text = initialText
+                }
                 if let demo = UserDefaults.standard.string(forKey: "demoSmartText"), text.isEmpty {
                     text = demo
                 } else {

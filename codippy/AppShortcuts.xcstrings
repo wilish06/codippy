@@ -1,0 +1,66 @@
+{
+  "sourceLanguage" : "es",
+  "strings" : {
+    "¿Cuál es mi código postal según ${applicationName}?" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "What is my postal code according to ${applicationName}?"
+          }
+        }
+      }
+    },
+    "Busca un código postal con ${applicationName}" : {
+      "extractionState" : "extracted_with_value",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "needs_review",
+            "value" : "Find a postal code with ${applicationName}"
+          }
+        },
+        "es" : {
+          "stringSet" : {
+            "state" : "new",
+            "values" : [
+              "Busca un código postal con ${applicationName}",
+              "Código postal con ${applicationName}"
+            ]
+          }
+        }
+      }
+    },
+    "Código postal con ${applicationName}" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Postal code with ${applicationName}"
+          }
+        }
+      }
+    },
+    "Mi código postal con ${applicationName}" : {
+      "extractionState" : "extracted_with_value",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "needs_review",
+            "value" : "My postal code with ${applicationName}"
+          }
+        },
+        "es" : {
+          "stringSet" : {
+            "state" : "new",
+            "values" : [
+              "Mi código postal con ${applicationName}",
+              "¿Cuál es mi código postal según ${applicationName}?"
+            ]
+          }
+        }
+      }
+    }
+  },
+  "version" : "1.0"
+}

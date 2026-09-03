@@ -2,21 +2,23 @@
 //  PostalRepository.swift
 //  codippy
 //
-//  Decide la fuente de datos: dataset empaquetado (offline) si existe para el
-//  país; si no, API de Zippopotam para códigos y geocoder de Apple para ciudades.
+//  Decide la fuente de datos: dataset offline (empaquetado o descargado) si
+//  existe para el país; si no, API de Zippopotam para códigos y geocoder de
+//  Apple para ciudades y calles.
 //
 
+import CoreLocation
 import Foundation
 import Observation
 
 @Observable
 final class PostalRepository {
-    private let dataset = BundledDatasetProvider()
+    private let dataset = DatasetProvider.shared
     private let api = ZippopotamService()
     private let geocoder = GeocoderService()
 
     /// Países soportados por Zippopotam que ofrecemos en el selector.
-    private static let onlineCountries = [
+    static let onlineCountries = [
         "ES", "PT", "FR", "DE", "IT", "GB", "NL", "BE", "CH", "AT",
         "PL", "CZ", "SK", "DK", "SE", "NO", "FI", "HU", "HR", "RO",
         "US", "CA", "MX", "AR", "BR", "JP", "IN", "AU", "NZ", "ZA",
@@ -30,21 +32,38 @@ final class PostalRepository {
             .sorted { $0.name.localizedStandardCompare($1.name) == .orderedAscending }
     }
 
+    func supports(country: String) -> Bool {
+        countries.contains { $0.code == country.uppercased() }
+    }
+
     func search(_ query: String, country: String) async throws -> [PostalPlace] {
         let text = query.trimmingCharacters(in: .whitespacesAndNewlines)
         guard !text.isEmpty else { return [] }
         if Self.looksLikePostalCode(text) {
+            try Self.validate(code: text, country: country)
             return try await lookup(code: text, country: country)
         }
         return try await searchPlace(text, country: country)
     }
 
     /// "28001" o "SW1A 1AA" son códigos; "Gran Vía 12" o "Sevilla" no.
-    private static func looksLikePostalCode(_ text: String) -> Bool {
+    static func looksLikePostalCode(_ text: String) -> Bool {
         let tokens = text.split { $0 == " " || $0 == "-" }
         guard text.contains(where: \.isNumber), tokens.count <= 2 else { return false }
         // Una palabra puramente alfabética delata un nombre de calle o ciudad.
         return !tokens.contains { $0.count >= 3 && $0.allSatisfy(\.isLetter) }
+    }
+
+    /// Evita consultas inútiles: códigos a medio escribir o imposibles en el país.
+    private static func validate(code: String, country: String) throws {
+        guard let format = PostalCodeFormat.format(for: country) else { return }
+        let countryName = Locale.current.localizedString(forRegionCode: country) ?? country
+        guard format.isComplete(code) else {
+            throw PostalError.incompleteCode(country: countryName, example: format.example)
+        }
+        guard format.matches(code) else {
+            throw PostalError.invalidFormat(country: countryName, example: format.example)
+        }
     }
 
     func lookup(code: String, country: String) async throws -> [PostalPlace] {
@@ -57,7 +76,7 @@ final class PostalRepository {
     func searchPlace(_ name: String, country: String) async throws -> [PostalPlace] {
         if dataset.hasDataset(for: country) {
             // Los datasets solo tienen poblaciones; si no hay match puede ser
-            // una calle, así que se intenta con el geocoder.
+            // una calle, así que se intenta con el geocoder (necesita red).
             if let matches = try? dataset.search(place: name, country: country) {
                 return matches
             }
@@ -84,6 +103,11 @@ final class PostalRepository {
             }
         }
         return seeds
+    }
+
+    /// Códigos postales vecinos (solo con dataset offline del país).
+    func nearby(to place: PostalPlace) -> [(place: PostalPlace, distance: CLLocationDistance)] {
+        dataset.nearby(to: place)
     }
 
     /// Barrio de un código postal por geocodificación inversa, con caché.

@@ -183,12 +183,12 @@ struct ScanAddressView: View {
             let observations = try await request.perform(on: data)
             let lines = observations.compactMap { $0.topCandidates(1).first?.string }
             guard !lines.isEmpty else {
-                errorMessage = "No se ha encontrado texto en la imagen."
+                errorMessage = String(localized: "No se ha encontrado texto en la imagen.")
                 return
             }
             capturedText = lines.joined(separator: "\n")
         } catch {
-            errorMessage = "No se ha podido leer la imagen."
+            errorMessage = String(localized: "No se ha podido leer la imagen.")
         }
     }
 

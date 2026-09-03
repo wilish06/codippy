@@ -4,7 +4,6 @@
 //
 //  Funciones de IA con el modelo on-device de Apple (Foundation Models):
 //  - Extraer una dirección estructurada de texto "sucio" (emails, WhatsApp, OCR).
-//  - Resumen breve de la zona de un código postal.
 //  Todo local: sin red, sin coste y compatible con el modo offline de la app.
 //
 
@@ -57,40 +56,6 @@ enum IntelligenceService {
         }
         #else
         return fallback
-        #endif
-    }
-
-    /// Resumen breve de la zona, o `nil` si el modelo no está disponible o falla.
-    static func areaSummary(for place: PostalPlace) async -> String? {
-        #if canImport(FoundationModels)
-        guard isAvailable else { return nil }
-        let country = Locale.current.localizedString(forRegionCode: place.countryCode) ?? place.countryCode
-        var location = [place.neighborhood, place.placeName, place.state, country]
-            .compactMap { $0 }
-            .filter { !$0.isEmpty }
-            .joined(separator: ", ")
-        if location.isEmpty { location = place.postalCode }
-        do {
-            let session = LanguageModelSession(instructions: """
-                Escribes descripciones breves de lugares para una app de códigos \
-                postales. Responde en español, en 2 o 3 frases, en texto plano: \
-                sin Markdown, sin asteriscos, sin listas ni títulos. Describe el \
-                lugar de forma general: qué tipo de sitio es y por qué se le conoce. \
-                No nombres barrios ni distritos, y no menciones monumentos o lugares \
-                concretos de los que no estés seguro.
-                """)
-            let response = try await session.respond(
-                to: "Describe brevemente: \(location)."
-            )
-            let text = response.content
-                .replacingOccurrences(of: "**", with: "")
-                .trimmingCharacters(in: .whitespacesAndNewlines)
-            return text.isEmpty ? nil : text
-        } catch {
-            return nil
-        }
-        #else
-        return nil
         #endif
     }
 

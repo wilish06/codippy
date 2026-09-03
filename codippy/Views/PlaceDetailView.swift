@@ -3,6 +3,7 @@
 //  codippy
 //
 
+import CoreLocation
 import MapKit
 import SwiftData
 import SwiftUI
@@ -11,10 +12,13 @@ struct PlaceDetailView: View {
     let place: PostalPlace
 
     @Environment(\.modelContext) private var modelContext
+    @Environment(PostalRepository.self) private var repository
     @State private var savedEntry: SavedLookup?
-    @State private var justCopied = false
-    @State private var aiSummary: String?
-    @State private var isGeneratingSummary = false
+    @State private var copied: CopiedItem?
+    @State private var neighbors: [(place: PostalPlace, distance: CLLocationDistance)] = []
+    @State private var userLocation = UserLocation.shared
+
+    private enum CopiedItem { case code, address }
 
     var body: some View {
         ZStack {
@@ -25,11 +29,11 @@ struct PlaceDetailView: View {
                         heroMap(coordinate: coordinate)
                     }
                     detailsCard
-                    if IntelligenceService.isAvailable {
-                        aiSummaryCard
-                    }
                     if let coordinate = place.coordinate {
                         actionButtons(coordinate: coordinate)
+                    }
+                    if !neighbors.isEmpty {
+                        neighborsCard
                     }
                 }
                 .padding(.horizontal)
@@ -41,7 +45,10 @@ struct PlaceDetailView: View {
         .navigationBarTitleDisplayMode(.inline)
         #endif
         .toolbar {
-            ToolbarItem(placement: .primaryAction) {
+            ToolbarItemGroup(placement: .primaryAction) {
+                ShareLink(item: place.fullAddress, subject: Text(place.postalCode)) {
+                    Label("Compartir", systemImage: "square.and.arrow.up")
+                }
                 Button {
                     toggleFavorite()
                 } label: {
@@ -54,8 +61,10 @@ struct PlaceDetailView: View {
                 }
             }
         }
-        .task { saveToHistory() }
-        .task { await generateSummary() }
+        .task {
+            saveToHistory()
+            neighbors = repository.nearby(to: place)
+        }
     }
 
     // MARK: - Secciones
@@ -68,48 +77,65 @@ struct PlaceDetailView: View {
             ))) {
                 Marker("\(place.postalCode) · \(place.placeName)", coordinate: coordinate)
                     .tint(.indigo)
+                ForEach(neighbors, id: \.place.id) { neighbor in
+                    if let neighborCoordinate = neighbor.place.coordinate {
+                        Annotation(neighbor.place.placeName, coordinate: neighborCoordinate, anchor: .center) {
+                            NavigationLink(value: neighbor.place) {
+                                Text(neighbor.place.postalCode)
+                                    .font(.caption2.weight(.bold))
+                                    .monospacedDigit()
+                                    .padding(.horizontal, 6)
+                                    .padding(.vertical, 3)
+                                    .background(.thickMaterial, in: Capsule())
+                                    .overlay(Capsule().strokeBorder(Theme.accent.opacity(0.5), lineWidth: 1))
+                            }
+                            .buttonStyle(.plain)
+                        }
+                        .annotationTitles(.hidden)
+                    }
+                }
             }
-            .frame(height: 320)
-            .clipShape(.rect(cornerRadius: 24))
+            .mapStyle(.standard(elevation: .realistic))
+            .frame(height: 240)
+            .clipShape(.rect(cornerRadius: 22))
+            .allowsHitTesting(true)
 
             HStack(spacing: 10) {
                 CodeChip(code: place.postalCode, large: true)
                 VStack(alignment: .leading, spacing: 1) {
-                    Text(place.street ?? place.placeName)
-                        .font(.subheadline.weight(.semibold))
-                    if let neighborhood = place.neighborhood {
-                        Text(neighborhood)
+                    Text(place.placeName)
+                        .font(.headline)
+                    if let line = place.regionLine {
+                        Text(line)
                             .font(.caption)
                             .foregroundStyle(.secondary)
                     }
                 }
-                .padding(.trailing, 4)
+                Spacer(minLength: 0)
+                CountryBadge(code: place.countryCode)
             }
-            .padding(8)
-            .background(.regularMaterial, in: .rect(cornerRadius: 18))
             .padding(12)
+            .background(.regularMaterial, in: .rect(cornerRadius: 16))
+            .padding(10)
         }
-        .shadow(color: .black.opacity(0.12), radius: 12, y: 6)
     }
 
     private var detailsCard: some View {
         VStack(alignment: .leading, spacing: 14) {
             if let street = place.street {
-                InfoRow(icon: "signpost.right.fill", tint: .orange, label: "Calle", value: street)
+                InfoRow(icon: "signpost.right.fill", tint: .brown, label: "Calle", value: street)
             }
             if let neighborhood = place.neighborhood {
-                InfoRow(icon: "building.2.fill", tint: .purple, label: "Barrio / Distrito", value: neighborhood)
+                InfoRow(icon: "building.2.fill", tint: .orange, label: "Barrio / distrito", value: neighborhood)
             }
-            InfoRow(icon: "mappin.circle.fill", tint: .red, label: "Población", value: place.placeName)
-            if !place.state.isEmpty {
-                InfoRow(icon: "map.fill", tint: .green, label: "Provincia / Estado", value: place.state)
+            InfoRow(icon: "mappin.circle.fill", tint: .indigo, label: "Población", value: place.placeName)
+            if let province = place.province, !province.isEmpty {
+                InfoRow(icon: "map.fill", tint: .purple, label: "Provincia", value: province)
             }
-            InfoRow(
-                icon: "globe.europe.africa.fill",
-                tint: .blue,
-                label: "País",
-                value: "\(Locale.current.localizedString(forRegionCode: place.countryCode) ?? place.countryCode) (\(place.countryCode.uppercased()))"
-            )
+            if !place.state.isEmpty, place.state.caseInsensitiveCompare(place.province ?? "") != .orderedSame {
+                InfoRow(icon: "flag.fill", tint: .pink, label: "Región", value: place.state)
+            }
+            InfoRow(icon: "globe.europe.africa.fill", tint: .blue, label: "País", value: place.countryName)
             if let latitude = place.latitude, let longitude = place.longitude {
                 InfoRow(
                     icon: "location.north.circle.fill",
@@ -118,55 +144,86 @@ struct PlaceDetailView: View {
                     value: String(format: "%.4f, %.4f", latitude, longitude)
                 )
             }
+            if let distance = userLocation.distance(to: place) {
+                InfoRow(
+                    icon: "figure.walk.circle.fill",
+                    tint: .green,
+                    label: "Distancia desde ti",
+                    value: UserLocation.formatted(distance)
+                )
+            }
         }
         .card()
     }
 
-    private var aiSummaryCard: some View {
+    private var neighborsCard: some View {
         VStack(alignment: .leading, spacing: 10) {
             HStack(spacing: 8) {
-                Image(systemName: "sparkles")
+                Image(systemName: "point.3.connected.trianglepath.dotted")
                     .font(.caption)
                     .foregroundStyle(.indigo)
-                Text("Sobre esta zona")
+                Text("Códigos cercanos")
                     .font(.headline)
             }
-
-            if let aiSummary {
-                Text(aiSummary)
-                    .font(.subheadline)
-                    .foregroundStyle(.secondary)
-                Text("Generado con IA en tu dispositivo · puede contener errores")
-                    .font(.caption2)
-                    .foregroundStyle(.tertiary)
-            } else if isGeneratingSummary {
-                HStack(spacing: 10) {
-                    ProgressView()
-                        .controlSize(.small)
-                    Text("Escribiendo…")
-                        .font(.caption)
-                        .foregroundStyle(.secondary)
+            VStack(spacing: 0) {
+                ForEach(neighbors, id: \.place.id) { neighbor in
+                    NavigationLink(value: neighbor.place) {
+                        HStack(spacing: 12) {
+                            CodeChip(code: neighbor.place.postalCode)
+                            VStack(alignment: .leading, spacing: 1) {
+                                Text(neighbor.place.placeName)
+                                    .font(.subheadline.weight(.medium))
+                                    .foregroundStyle(.primary)
+                                if let line = neighbor.place.regionLine, line != place.regionLine {
+                                    Text(line)
+                                        .font(.caption)
+                                        .foregroundStyle(.secondary)
+                                }
+                            }
+                            Spacer()
+                            Text(UserLocation.formatted(neighbor.distance))
+                                .font(.caption.monospacedDigit())
+                                .foregroundStyle(.secondary)
+                            Image(systemName: "chevron.right")
+                                .font(.caption2.weight(.bold))
+                                .foregroundStyle(.tertiary)
+                        }
+                        .padding(.vertical, 8)
+                        .contentShape(Rectangle())
+                    }
+                    .buttonStyle(.plain)
+                    if neighbor.place.id != neighbors.last?.place.id {
+                        Divider()
+                    }
                 }
-            } else {
-                Text("No se ha podido generar la descripción.")
-                    .font(.caption)
-                    .foregroundStyle(.secondary)
             }
         }
-        .frame(maxWidth: .infinity, alignment: .leading)
         .card()
     }
 
     private func actionButtons(coordinate: CLLocationCoordinate2D) -> some View {
-        HStack(spacing: 10) {
-            Button {
-                copyCode()
-            } label: {
-                Label(justCopied ? "¡Copiado!" : "Copiar código", systemImage: justCopied ? "checkmark" : "doc.on.doc")
-                    .frame(maxWidth: .infinity)
+        VStack(spacing: 10) {
+            HStack(spacing: 10) {
+                Button {
+                    copy(place.postalCode, as: .code)
+                } label: {
+                    Label(copied == .code ? "¡Copiado!" : "Copiar código",
+                          systemImage: copied == .code ? "checkmark" : "doc.on.doc")
+                        .frame(maxWidth: .infinity)
+                }
+                .buttonStyle(.bordered)
+                .tint(copied == .code ? .green : .indigo)
+
+                Button {
+                    copy(place.fullAddress, as: .address)
+                } label: {
+                    Label(copied == .address ? "¡Copiada!" : "Copiar dirección",
+                          systemImage: copied == .address ? "checkmark" : "text.alignleft")
+                        .frame(maxWidth: .infinity)
+                }
+                .buttonStyle(.bordered)
+                .tint(copied == .address ? .green : .indigo)
             }
-            .buttonStyle(.bordered)
-            .tint(justCopied ? .green : .indigo)
 
             Button {
                 openInMaps(coordinate: coordinate)
@@ -185,73 +242,59 @@ struct PlaceDetailView: View {
 
     private var isFavorite: Bool { savedEntry?.isFavorite ?? false }
 
-    private func generateSummary() async {
-        guard IntelligenceService.isAvailable, aiSummary == nil else { return }
-        isGeneratingSummary = true
-        defer { isGeneratingSummary = false }
-        aiSummary = await IntelligenceService.areaSummary(for: place)
-    }
-
-    private func copyCode() {
+    private func copy(_ text: String, as item: CopiedItem) {
         #if os(macOS)
         NSPasteboard.general.clearContents()
-        NSPasteboard.general.setString(place.postalCode, forType: .string)
+        NSPasteboard.general.setString(text, forType: .string)
         #else
-        UIPasteboard.general.string = place.postalCode
+        UIPasteboard.general.string = text
         #endif
-        withAnimation(.snappy) { justCopied = true }
+        withAnimation(.snappy) { copied = item }
         Task {
-            try? await Task.sleep(for: .seconds(2))
-            withAnimation(.snappy) { justCopied = false }
+            try? await Task.sleep(for: .seconds(1.5))
+            withAnimation { if copied == item { copied = nil } }
         }
-    }
-
-    private func saveToHistory() {
-        let entry = existingEntry() ?? {
-            let new = SavedLookup(place: place)
-            modelContext.insert(new)
-            return new
-        }()
-        entry.timestamp = .now
-        savedEntry = entry
-    }
-
-    private func toggleFavorite() {
-        saveToHistory()
-        withAnimation(.snappy) {
-            savedEntry?.isFavorite.toggle()
-        }
-    }
-
-    private func existingEntry() -> SavedLookup? {
-        if let savedEntry { return savedEntry }
-        let country = place.countryCode
-        let code = place.postalCode
-        let name = place.placeName
-        let descriptor = FetchDescriptor<SavedLookup>(
-            predicate: #Predicate { $0.countryCode == country && $0.postalCode == code && $0.placeName == name }
-        )
-        return try? modelContext.fetch(descriptor).first
     }
 
     private func openInMaps(coordinate: CLLocationCoordinate2D) {
-        let item = MKMapItem(location: CLLocation(latitude: coordinate.latitude, longitude: coordinate.longitude), address: nil)
-        item.name = "\(place.postalCode) \(place.placeName)"
-        item.openInMaps()
+        let mapItem = MKMapItem(location: CLLocation(latitude: coordinate.latitude, longitude: coordinate.longitude), address: nil)
+        mapItem.name = "\(place.postalCode) · \(place.placeName)"
+        mapItem.openInMaps()
+    }
+
+    private func saveToHistory() {
+        let code = place.postalCode
+        let country = place.countryCode
+        let name = place.placeName
+        let descriptor = FetchDescriptor<SavedLookup>(
+            predicate: #Predicate { $0.postalCode == code && $0.countryCode == country && $0.placeName == name }
+        )
+        if let existing = try? modelContext.fetch(descriptor).first {
+            existing.timestamp = .now
+            if existing.neighborhood == nil { existing.neighborhood = place.neighborhood }
+            if existing.province == nil { existing.province = place.province }
+            savedEntry = existing
+        } else {
+            let entry = SavedLookup(place: place)
+            modelContext.insert(entry)
+            savedEntry = entry
+        }
+    }
+
+    private func toggleFavorite() {
+        guard let savedEntry else { return }
+        savedEntry.isFavorite.toggle()
+        FavoritesSync.publish(from: modelContext)
     }
 }
 
 #Preview {
     NavigationStack {
         PlaceDetailView(place: PostalPlace(
-            countryCode: "ES",
-            postalCode: "28001",
-            placeName: "Madrid",
-            state: "Madrid",
-            latitude: 40.4258,
-            longitude: -3.6906,
-            neighborhood: "Salamanca"
+            countryCode: "ES", postalCode: "28001", placeName: "Madrid", state: "Comunidad de Madrid",
+            latitude: 40.4167, longitude: -3.7033, neighborhood: "Salamanca", province: "Madrid"
         ))
     }
+    .environment(PostalRepository())
     .modelContainer(for: SavedLookup.self, inMemory: true)
 }

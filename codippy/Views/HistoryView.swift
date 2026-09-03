@@ -35,6 +35,15 @@ struct HistoryView: View {
             .navigationDestination(for: PostalPlace.self) { place in
                 PlaceDetailView(place: place)
             }
+            .toolbar {
+                if !recents.isEmpty {
+                    ToolbarItem(placement: .automatic) {
+                        Button("Borrar recientes", systemImage: "trash") {
+                            for entry in recents { modelContext.delete(entry) }
+                        }
+                    }
+                }
+            }
         }
     }
 
@@ -55,7 +64,7 @@ struct HistoryView: View {
         }
     }
 
-    private func section(title: String, icon: String, tint: Color, items: [SavedLookup]) -> some View {
+    private func section(title: LocalizedStringKey, icon: String, tint: Color, items: [SavedLookup]) -> some View {
         Section {
             ForEach(items) { entry in
                 NavigationLink(value: entry.place) {
@@ -78,8 +87,13 @@ struct HistoryView: View {
     }
 
     private func delete(from list: [SavedLookup], at offsets: IndexSet) {
+        var touchedFavorite = false
         for index in offsets {
+            touchedFavorite = touchedFavorite || list[index].isFavorite
             modelContext.delete(list[index])
+        }
+        if touchedFavorite {
+            FavoritesSync.publish(from: modelContext)
         }
     }
 }

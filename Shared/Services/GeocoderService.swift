@@ -14,6 +14,8 @@ struct GeocoderService {
         let placemarks: [CLPlacemark]
         do {
             placemarks = try await CLGeocoder().geocodeAddressString("\(name), \(countryName)")
+        } catch let error as CLError where error.code == .network {
+            throw PostalError.offline
         } catch {
             throw PostalError.notFound
         }
@@ -69,7 +71,8 @@ struct GeocoderService {
             latitude: placemark.location?.coordinate.latitude,
             longitude: placemark.location?.coordinate.longitude,
             neighborhood: placemark.subLocality,
-            street: street
+            street: street,
+            province: placemark.subAdministrativeArea
         )
     }
 }

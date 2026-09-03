@@ -1,0 +1,221 @@
+{
+ "entries": [
+  {
+   "code": "AR",
+   "url": "https://wilish06.github.io/codippy/datasets/postalcodes_AR.tsv.gz",
+   "bytes": 202235,
+   "records": 20260,
+   "updated": "2026-09-03"
+  },
+  {
+   "code": "AT",
+   "url": "https://wilish06.github.io/codippy/datasets/postalcodes_AT.tsv.gz",
+   "bytes": 258398,
+   "records": 19225,
+   "updated": "2026-09-03"
+  },
+  {
+   "code": "AU",
+   "url": "https://wilish06.github.io/codippy/datasets/postalcodes_AU.tsv.gz",
+   "bytes": 264484,
+   "records": 18521,
+   "updated": "2026-09-03"
+  },
+  {
+   "code": "BE",
+   "url": "https://wilish06.github.io/codippy/datasets/postalcodes_BE.tsv.gz",
+   "bytes": 41949,
+   "records": 2781,
+   "updated": "2026-09-03"
+  },
+  {
+   "code": "BR",
+   "url": "https://wilish06.github.io/codippy/datasets/postalcodes_BR.tsv.gz",
+   "bytes": 132825,
+   "records": 5525,
+   "updated": "2026-09-03"
+  },
+  {
+   "code": "CA",
+   "url": "https://wilish06.github.io/codippy/datasets/postalcodes_CA.tsv.gz",
+   "bytes": 36018,
+   "records": 1657,
+   "updated": "2026-09-03"
+  },
+  {
+   "code": "CH",
+   "url": "https://wilish06.github.io/codippy/datasets/postalcodes_CH.tsv.gz",
+   "bytes": 84447,
+   "records": 4520,
+   "updated": "2026-09-03"
+  },
+  {
+   "code": "CZ",
+   "url": "https://wilish06.github.io/codippy/datasets/postalcodes_CZ.tsv.gz",
+   "bytes": 209113,
+   "records": 15507,
+   "updated": "2026-09-03"
+  },
+  {
+   "code": "DE",
+   "url": "https://wilish06.github.io/codippy/datasets/postalcodes_DE.tsv.gz",
+   "bytes": 377464,
+   "records": 23297,
+   "updated": "2026-09-03"
+  },
+  {
+   "code": "DK",
+   "url": "https://wilish06.github.io/codippy/datasets/postalcodes_DK.tsv.gz",
+   "bytes": 15310,
+   "records": 1159,
+   "updated": "2026-09-03"
+  },
+  {
+   "code": "FI",
+   "url": "https://wilish06.github.io/codippy/datasets/postalcodes_FI.tsv.gz",
+   "bytes": 53436,
+   "records": 3576,
+   "updated": "2026-09-03"
+  },
+  {
+   "code": "FR",
+   "url": "https://wilish06.github.io/codippy/datasets/postalcodes_FR.tsv.gz",
+   "bytes": 634748,
+   "records": 51611,
+   "updated": "2026-09-03"
+  },
+  {
+   "code": "GB",
+   "url": "https://wilish06.github.io/codippy/datasets/postalcodes_GB.tsv.gz",
+   "bytes": 324658,
+   "records": 27450,
+   "updated": "2026-09-03"
+  },
+  {
+   "code": "HR",
+   "url": "https://wilish06.github.io/codippy/datasets/postalcodes_HR.tsv.gz",
+   "bytes": 83918,
+   "records": 6774,
+   "updated": "2026-09-03"
+  },
+  {
+   "code": "HU",
+   "url": "https://wilish06.github.io/codippy/datasets/postalcodes_HU.tsv.gz",
+   "bytes": 48650,
+   "records": 3571,
+   "updated": "2026-09-03"
+  },
+  {
+   "code": "IN",
+   "url": "https://wilish06.github.io/codippy/datasets/postalcodes_IN.tsv.gz",
+   "bytes": 1698570,
+   "records": 155570,
+   "updated": "2026-09-03"
+  },
+  {
+   "code": "IT",
+   "url": "https://wilish06.github.io/codippy/datasets/postalcodes_IT.tsv.gz",
+   "bytes": 252636,
+   "records": 18415,
+   "updated": "2026-09-03"
+  },
+  {
+   "code": "JP",
+   "url": "https://wilish06.github.io/codippy/datasets/postalcodes_JP.tsv.gz",
+   "bytes": 1663774,
+   "records": 146883,
+   "updated": "2026-09-03"
+  },
+  {
+   "code": "MX",
+   "url": "https://wilish06.github.io/codippy/datasets/postalcodes_MX.tsv.gz",
+   "bytes": 1976083,
+   "records": 144655,
+   "updated": "2026-09-03"
+  },
+  {
+   "code": "NL",
+   "url": "https://wilish06.github.io/codippy/datasets/postalcodes_NL.tsv.gz",
+   "bytes": 61524,
+   "records": 4334,
+   "updated": "2026-09-03"
+  },
+  {
+   "code": "NO",
+   "url": "https://wilish06.github.io/codippy/datasets/postalcodes_NO.tsv.gz",
+   "bytes": 46946,
+   "records": 5132,
+   "updated": "2026-09-03"
+  },
+  {
+   "code": "NZ",
+   "url": "https://wilish06.github.io/codippy/datasets/postalcodes_NZ.tsv.gz",
+   "bytes": 20025,
+   "records": 1738,
+   "updated": "2026-09-03"
+  },
+  {
+   "code": "PL",
+   "url": "https://wilish06.github.io/codippy/datasets/postalcodes_PL.tsv.gz",
+   "bytes": 966661,
+   "records": 72899,
+   "updated": "2026-09-03"
+  },
+  {
+   "code": "PT",
+   "url": "https://wilish06.github.io/codippy/datasets/postalcodes_PT.tsv.gz",
+   "bytes": 1040999,
+   "records": 206942,
+   "updated": "2026-09-03"
+  },
+  {
+   "code": "RO",
+   "url": "https://wilish06.github.io/codippy/datasets/postalcodes_RO.tsv.gz",
+   "bytes": 281942,
+   "records": 37915,
+   "updated": "2026-09-03"
+  },
+  {
+   "code": "RU",
+   "url": "https://wilish06.github.io/codippy/datasets/postalcodes_RU.tsv.gz",
+   "bytes": 674692,
+   "records": 43538,
+   "updated": "2026-09-03"
+  },
+  {
+   "code": "SE",
+   "url": "https://wilish06.github.io/codippy/datasets/postalcodes_SE.tsv.gz",
+   "bytes": 91548,
+   "records": 18887,
+   "updated": "2026-09-03"
+  },
+  {
+   "code": "SK",
+   "url": "https://wilish06.github.io/codippy/datasets/postalcodes_SK.tsv.gz",
+   "bytes": 57994,
+   "records": 5233,
+   "updated": "2026-09-03"
+  },
+  {
+   "code": "TR",
+   "url": "https://wilish06.github.io/codippy/datasets/postalcodes_TR.tsv.gz",
+   "bytes": 476217,
+   "records": 36307,
+   "updated": "2026-09-03"
+  },
+  {
+   "code": "US",
+   "url": "https://wilish06.github.io/codippy/datasets/postalcodes_US.tsv.gz",
+   "bytes": 625281,
+   "records": 41490,
+   "updated": "2026-09-03"
+  },
+  {
+   "code": "ZA",
+   "url": "https://wilish06.github.io/codippy/datasets/postalcodes_ZA.tsv.gz",
+   "bytes": 24485,
+   "records": 3920,
+   "updated": "2026-09-03"
+  }
+ ]
+}

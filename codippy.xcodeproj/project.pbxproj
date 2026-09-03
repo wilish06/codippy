@@ -6,14 +6,96 @@
 	objectVersion = 77;
 	objects = {
 
+/* Begin PBXBuildFile section */
+		33D48D4C57F927EF8EC886D3 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 51C76E3400AF5D5B08504EB1 /* Foundation.framework */; };
+		610652F928430AA5BD989D9F /* CodippyShare.appex in Embed Foundation Extensions */ = {isa = PBXBuildFile; fileRef = FA911290134298171A602121 /* CodippyShare.appex */; platformFilter = ios; settings = {ATTRIBUTES = (RemoveHeadersOnCopy, ); }; };
+		7241425863C7BF9D1E566A5C /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 51C76E3400AF5D5B08504EB1 /* Foundation.framework */; };
+		D7366CD3ADE8378A714CF825 /* CodippyWidgets.appex in Embed Foundation Extensions */ = {isa = PBXBuildFile; fileRef = B64E2C13FF4069A2D0047547 /* CodippyWidgets.appex */; platformFilter = ios; settings = {ATTRIBUTES = (RemoveHeadersOnCopy, ); }; };
+/* End PBXBuildFile section */
+
+/* Begin PBXContainerItemProxy section */
+		909852A956FACC0A83DB3866 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 2C34EBD93042C9D5004423F8 /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = E0C36EBFA875B52B15374C5C;
+			remoteInfo = CodippyWidgets;
+		};
+		BDD4B64CD7D18C1F862DBCEA /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 2C34EBD93042C9D5004423F8 /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = F08CE264224C7587E1D45626;
+			remoteInfo = CodippyShare;
+		};
+/* End PBXContainerItemProxy section */
+
+/* Begin PBXCopyFilesBuildPhase section */
+		1791296E4C0999ED25AAD77B /* Embed Foundation Extensions */ = {
+			isa = PBXCopyFilesBuildPhase;
+			buildActionMask = 2147483647;
+			dstPath = "";
+			dstSubfolderSpec = 13;
+			files = (
+				610652F928430AA5BD989D9F /* CodippyShare.appex in Embed Foundation Extensions */,
+				D7366CD3ADE8378A714CF825 /* CodippyWidgets.appex in Embed Foundation Extensions */,
+			);
+			name = "Embed Foundation Extensions";
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXCopyFilesBuildPhase section */
+
 /* Begin PBXFileReference section */
+		18413966819F83E36D76418F /* codippy-Info.plist */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.plist.xml; path = "codippy-Info.plist"; sourceTree = "<group>"; };
 		2C34EBE13042C9D5004423F8 /* codippy.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = codippy.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		51C76E3400AF5D5B08504EB1 /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = Platforms/iPhoneOS.platform/Developer/SDKs/iPhoneOS18.0.sdk/System/Library/Frameworks/Foundation.framework; sourceTree = DEVELOPER_DIR; };
+		B64E2C13FF4069A2D0047547 /* CodippyWidgets.appex */ = {isa = PBXFileReference; explicitFileType = "wrapper.app-extension"; includeInIndex = 0; path = CodippyWidgets.appex; sourceTree = BUILT_PRODUCTS_DIR; };
+		F74C172CFD0F9F9898876E18 /* codippy-iOS.entitlements */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.plist.entitlements; path = "codippy-iOS.entitlements"; sourceTree = "<group>"; };
+		FA911290134298171A602121 /* CodippyShare.appex */ = {isa = PBXFileReference; explicitFileType = "wrapper.app-extension"; includeInIndex = 0; path = CodippyShare.appex; sourceTree = BUILT_PRODUCTS_DIR; };
 /* End PBXFileReference section */
+
+/* Begin PBXFileSystemSynchronizedBuildFileExceptionSet section */
+		1BB63889B1E0BA9CC98A36DD /* Exceptions for "CodippyWidgets" folder in "CodippyWidgets" target */ = {
+			isa = PBXFileSystemSynchronizedBuildFileExceptionSet;
+			membershipExceptions = (
+				Info.plist,
+			);
+			target = E0C36EBFA875B52B15374C5C /* CodippyWidgets */;
+		};
+		B87738A8C7A2485FD359B8AA /* Exceptions for "CodippyShare" folder in "CodippyShare" target */ = {
+			isa = PBXFileSystemSynchronizedBuildFileExceptionSet;
+			membershipExceptions = (
+				Info.plist,
+			);
+			target = F08CE264224C7587E1D45626 /* CodippyShare */;
+		};
+/* End PBXFileSystemSynchronizedBuildFileExceptionSet section */
 
 /* Begin PBXFileSystemSynchronizedRootGroup section */
 		2C34EBE33042C9D5004423F8 /* codippy */ = {
 			isa = PBXFileSystemSynchronizedRootGroup;
 			path = codippy;
+			sourceTree = "<group>";
+		};
+		2F7DA6C0AD4DED218A1BD617 /* CodippyWidgets */ = {
+			isa = PBXFileSystemSynchronizedRootGroup;
+			exceptions = (
+				1BB63889B1E0BA9CC98A36DD /* Exceptions for "CodippyWidgets" folder in "CodippyWidgets" target */,
+			);
+			path = CodippyWidgets;
+			sourceTree = "<group>";
+		};
+		4E4B952249A7B7413AFE743C /* Shared */ = {
+			isa = PBXFileSystemSynchronizedRootGroup;
+			path = Shared;
+			sourceTree = "<group>";
+		};
+		99A4C5297AE64E7C018D0588 /* CodippyShare */ = {
+			isa = PBXFileSystemSynchronizedRootGroup;
+			exceptions = (
+				B87738A8C7A2485FD359B8AA /* Exceptions for "CodippyShare" folder in "CodippyShare" target */,
+			);
+			path = CodippyShare;
 			sourceTree = "<group>";
 		};
 /* End PBXFileSystemSynchronizedRootGroup section */
@@ -26,6 +108,22 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
+		E5D9A2ED3B4DD87BC32FBE21 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				7241425863C7BF9D1E566A5C /* Foundation.framework in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		EA2EE03A4EB059EF1F6BC0D3 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				33D48D4C57F927EF8EC886D3 /* Foundation.framework in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
@@ -33,7 +131,13 @@
 			isa = PBXGroup;
 			children = (
 				2C34EBE33042C9D5004423F8 /* codippy */,
+				4E4B952249A7B7413AFE743C /* Shared */,
+				2F7DA6C0AD4DED218A1BD617 /* CodippyWidgets */,
+				99A4C5297AE64E7C018D0588 /* CodippyShare */,
 				2C34EBE23042C9D5004423F8 /* Products */,
+				18413966819F83E36D76418F /* codippy-Info.plist */,
+				F74C172CFD0F9F9898876E18 /* codippy-iOS.entitlements */,
+				8A08E3372F835FBB0D56B87F /* Frameworks */,
 			);
 			sourceTree = "<group>";
 		};
@@ -41,8 +145,26 @@
 			isa = PBXGroup;
 			children = (
 				2C34EBE13042C9D5004423F8 /* codippy.app */,
+				FA911290134298171A602121 /* CodippyShare.appex */,
+				B64E2C13FF4069A2D0047547 /* CodippyWidgets.appex */,
 			);
 			name = Products;
+			sourceTree = "<group>";
+		};
+		869368073711582661E84B14 /* iOS */ = {
+			isa = PBXGroup;
+			children = (
+				51C76E3400AF5D5B08504EB1 /* Foundation.framework */,
+			);
+			name = iOS;
+			sourceTree = "<group>";
+		};
+		8A08E3372F835FBB0D56B87F /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				869368073711582661E84B14 /* iOS */,
+			);
+			name = Frameworks;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -55,20 +177,64 @@
 				2C34EBDD3042C9D5004423F8 /* Sources */,
 				2C34EBDE3042C9D5004423F8 /* Frameworks */,
 				2C34EBDF3042C9D5004423F8 /* Resources */,
+				1791296E4C0999ED25AAD77B /* Embed Foundation Extensions */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				9977D22A93504BA6297D65B2 /* PBXTargetDependency */,
+				37645DEFFDAB6AA0572CA7BB /* PBXTargetDependency */,
+			);
+			fileSystemSynchronizedGroups = (
+				2C34EBE33042C9D5004423F8 /* codippy */,
+				4E4B952249A7B7413AFE743C /* Shared */,
+			);
+			name = codippy;
+			productName = codippy;
+			productReference = 2C34EBE13042C9D5004423F8 /* codippy.app */;
+			productType = "com.apple.product-type.application";
+		};
+		E0C36EBFA875B52B15374C5C /* CodippyWidgets */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = EE8C6F69CAC179614A8200FB /* Build configuration list for PBXNativeTarget "CodippyWidgets" */;
+			buildPhases = (
+				EBECA026C1A6B6B039B1E2CE /* Sources */,
+				E5D9A2ED3B4DD87BC32FBE21 /* Frameworks */,
+				C6B0E4194F21F2C94AE21B9F /* Resources */,
 			);
 			buildRules = (
 			);
 			dependencies = (
 			);
 			fileSystemSynchronizedGroups = (
-				2C34EBE33042C9D5004423F8 /* codippy */,
+				2F7DA6C0AD4DED218A1BD617 /* CodippyWidgets */,
+				4E4B952249A7B7413AFE743C /* Shared */,
 			);
-			name = codippy;
-			packageProductDependencies = (
+			name = CodippyWidgets;
+			productName = CodippyWidgets;
+			productReference = B64E2C13FF4069A2D0047547 /* CodippyWidgets.appex */;
+			productType = "com.apple.product-type.app-extension";
+		};
+		F08CE264224C7587E1D45626 /* CodippyShare */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = C21E0A0152595E17C467739C /* Build configuration list for PBXNativeTarget "CodippyShare" */;
+			buildPhases = (
+				548B7E26DD363FC7FB115E52 /* Sources */,
+				EA2EE03A4EB059EF1F6BC0D3 /* Frameworks */,
+				F1D81011749C11331CBE36BD /* Resources */,
 			);
-			productName = codippy;
-			productReference = 2C34EBE13042C9D5004423F8 /* codippy.app */;
-			productType = "com.apple.product-type.application";
+			buildRules = (
+			);
+			dependencies = (
+			);
+			fileSystemSynchronizedGroups = (
+				4E4B952249A7B7413AFE743C /* Shared */,
+				99A4C5297AE64E7C018D0588 /* CodippyShare */,
+			);
+			name = CodippyShare;
+			productName = CodippyShare;
+			productReference = FA911290134298171A602121 /* CodippyShare.appex */;
+			productType = "com.apple.product-type.app-extension";
 		};
 /* End PBXNativeTarget section */
 
@@ -81,6 +247,12 @@
 				LastUpgradeCheck = 2660;
 				TargetAttributes = {
 					2C34EBE03042C9D5004423F8 = {
+						CreatedOnToolsVersion = 26.6;
+					};
+					E0C36EBFA875B52B15374C5C = {
+						CreatedOnToolsVersion = 26.6;
+					};
+					F08CE264224C7587E1D45626 = {
 						CreatedOnToolsVersion = 26.6;
 					};
 				};
@@ -101,12 +273,28 @@
 			projectRoot = "";
 			targets = (
 				2C34EBE03042C9D5004423F8 /* codippy */,
+				F08CE264224C7587E1D45626 /* CodippyShare */,
+				E0C36EBFA875B52B15374C5C /* CodippyWidgets */,
 			);
 		};
 /* End PBXProject section */
 
 /* Begin PBXResourcesBuildPhase section */
 		2C34EBDF3042C9D5004423F8 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		C6B0E4194F21F2C94AE21B9F /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		F1D81011749C11331CBE36BD /* Resources */ = {
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
@@ -123,9 +311,76 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
+		548B7E26DD363FC7FB115E52 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		EBECA026C1A6B6B039B1E2CE /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 /* End PBXSourcesBuildPhase section */
 
+/* Begin PBXTargetDependency section */
+		37645DEFFDAB6AA0572CA7BB /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			name = CodippyWidgets;
+			platformFilter = ios;
+			target = E0C36EBFA875B52B15374C5C /* CodippyWidgets */;
+			targetProxy = 909852A956FACC0A83DB3866 /* PBXContainerItemProxy */;
+		};
+		9977D22A93504BA6297D65B2 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			name = CodippyShare;
+			platformFilter = ios;
+			target = F08CE264224C7587E1D45626 /* CodippyShare */;
+			targetProxy = BDD4B64CD7D18C1F862DBCEA /* PBXContainerItemProxy */;
+		};
+/* End PBXTargetDependency section */
+
 /* Begin XCBuildConfiguration section */
+		124C5DDEEBF9B5AA5770701B /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1;
+				DEBUG_INFORMATION_FORMAT = dwarf;
+				DEVELOPMENT_TEAM = A954YC526C;
+				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_FILE = CodippyShare/Info.plist;
+				INFOPLIST_KEY_CFBundleDisplayName = Codippy;
+				INFOPLIST_KEY_NSHumanReadableCopyright = "";
+				IPHONEOS_DEPLOYMENT_TARGET = 26.5;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+					"@executable_path/../../Frameworks",
+				);
+				LOCALIZATION_PREFERS_STRING_CATALOGS = YES;
+				MARKETING_VERSION = 1.1;
+				PRODUCT_BUNDLE_IDENTIFIER = com.wilish.codippy.share;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SDKROOT = iphoneos;
+				SKIP_INSTALL = YES;
+				STRING_CATALOG_GENERATE_SYMBOLS = YES;
+				SUPPORTED_PLATFORMS = "iphoneos iphonesimulator";
+				SWIFT_ACTIVE_COMPILATION_CONDITIONS = "DEBUG $(inherited)";
+				SWIFT_APPROACHABLE_CONCURRENCY = YES;
+				SWIFT_DEFAULT_ACTOR_ISOLATION = MainActor;
+				SWIFT_EMIT_LOC_STRINGS = YES;
+				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
+				SWIFT_UPCOMING_FEATURE_MEMBER_IMPORT_VISIBILITY = YES;
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+			};
+			name = Debug;
+		};
 		2C34EBEA3042C9D6004423F8 /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
@@ -248,6 +503,8 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				CODE_SIGN_ENTITLEMENTS = codippy.entitlements;
+				"CODE_SIGN_ENTITLEMENTS[sdk=iphoneos*]" = "codippy-iOS.entitlements";
+				"CODE_SIGN_ENTITLEMENTS[sdk=iphonesimulator*]" = "codippy-iOS.entitlements";
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
 				DEVELOPMENT_TEAM = A954YC526C;
@@ -256,6 +513,7 @@
 				ENABLE_PREVIEWS = YES;
 				ENABLE_USER_SELECTED_FILES = readonly;
 				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_FILE = "codippy-Info.plist";
 				INFOPLIST_KEY_CFBundleDisplayName = Codippy;
 				INFOPLIST_KEY_ITSAppUsesNonExemptEncryption = NO;
 				INFOPLIST_KEY_NSCameraUsageDescription = "La cámara se usa para escanear direcciones en sobres y etiquetas.";
@@ -264,8 +522,6 @@
 				"INFOPLIST_KEY_UIApplicationSceneManifest_Generation[sdk=iphonesimulator*]" = YES;
 				"INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents[sdk=iphoneos*]" = YES;
 				"INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents[sdk=iphonesimulator*]" = YES;
-				"INFOPLIST_KEY_UILaunchScreen_Generation[sdk=iphoneos*]" = YES;
-				"INFOPLIST_KEY_UILaunchScreen_Generation[sdk=iphonesimulator*]" = YES;
 				"INFOPLIST_KEY_UIStatusBarStyle[sdk=iphoneos*]" = UIStatusBarStyleDefault;
 				"INFOPLIST_KEY_UIStatusBarStyle[sdk=iphonesimulator*]" = UIStatusBarStyleDefault;
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
@@ -274,7 +530,7 @@
 				LD_RUNPATH_SEARCH_PATHS = "@executable_path/Frameworks";
 				"LD_RUNPATH_SEARCH_PATHS[sdk=macosx*]" = "@executable_path/../Frameworks";
 				MACOSX_DEPLOYMENT_TARGET = 26.5;
-				MARKETING_VERSION = 1.0;
+				MARKETING_VERSION = 1.1;
 				PRODUCT_BUNDLE_IDENTIFIER = com.wilish.codippy;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				REGISTER_APP_GROUPS = YES;
@@ -297,6 +553,8 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				CODE_SIGN_ENTITLEMENTS = codippy.entitlements;
+				"CODE_SIGN_ENTITLEMENTS[sdk=iphoneos*]" = "codippy-iOS.entitlements";
+				"CODE_SIGN_ENTITLEMENTS[sdk=iphonesimulator*]" = "codippy-iOS.entitlements";
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
 				DEVELOPMENT_TEAM = A954YC526C;
@@ -305,6 +563,7 @@
 				ENABLE_PREVIEWS = YES;
 				ENABLE_USER_SELECTED_FILES = readonly;
 				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_FILE = "codippy-Info.plist";
 				INFOPLIST_KEY_CFBundleDisplayName = Codippy;
 				INFOPLIST_KEY_ITSAppUsesNonExemptEncryption = NO;
 				INFOPLIST_KEY_NSCameraUsageDescription = "La cámara se usa para escanear direcciones en sobres y etiquetas.";
@@ -313,8 +572,6 @@
 				"INFOPLIST_KEY_UIApplicationSceneManifest_Generation[sdk=iphonesimulator*]" = YES;
 				"INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents[sdk=iphoneos*]" = YES;
 				"INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents[sdk=iphonesimulator*]" = YES;
-				"INFOPLIST_KEY_UILaunchScreen_Generation[sdk=iphoneos*]" = YES;
-				"INFOPLIST_KEY_UILaunchScreen_Generation[sdk=iphonesimulator*]" = YES;
 				"INFOPLIST_KEY_UIStatusBarStyle[sdk=iphoneos*]" = UIStatusBarStyleDefault;
 				"INFOPLIST_KEY_UIStatusBarStyle[sdk=iphonesimulator*]" = UIStatusBarStyleDefault;
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
@@ -323,7 +580,7 @@
 				LD_RUNPATH_SEARCH_PATHS = "@executable_path/Frameworks";
 				"LD_RUNPATH_SEARCH_PATHS[sdk=macosx*]" = "@executable_path/../Frameworks";
 				MACOSX_DEPLOYMENT_TARGET = 26.5;
-				MARKETING_VERSION = 1.0;
+				MARKETING_VERSION = 1.1;
 				PRODUCT_BUNDLE_IDENTIFIER = com.wilish.codippy;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				REGISTER_APP_GROUPS = YES;
@@ -332,6 +589,116 @@
 				SUPPORTED_PLATFORMS = "iphoneos iphonesimulator macosx";
 				SUPPORTS_MACCATALYST = NO;
 				SWIFT_APPROACHABLE_CONCURRENCY = YES;
+				SWIFT_DEFAULT_ACTOR_ISOLATION = MainActor;
+				SWIFT_EMIT_LOC_STRINGS = YES;
+				SWIFT_UPCOMING_FEATURE_MEMBER_IMPORT_VISIBILITY = YES;
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+			};
+			name = Release;
+		};
+		335166B63FB531DB73C62479 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
+				CODE_SIGN_ENTITLEMENTS = CodippyWidgets/CodippyWidgets.entitlements;
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1;
+				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
+				DEVELOPMENT_TEAM = A954YC526C;
+				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_FILE = CodippyWidgets/Info.plist;
+				INFOPLIST_KEY_CFBundleDisplayName = Codippy;
+				INFOPLIST_KEY_NSHumanReadableCopyright = "";
+				IPHONEOS_DEPLOYMENT_TARGET = 26.5;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+					"@executable_path/../../Frameworks",
+				);
+				LOCALIZATION_PREFERS_STRING_CATALOGS = YES;
+				MARKETING_VERSION = 1.1;
+				PRODUCT_BUNDLE_IDENTIFIER = com.wilish.codippy.widgets;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SDKROOT = iphoneos;
+				SKIP_INSTALL = YES;
+				STRING_CATALOG_GENERATE_SYMBOLS = YES;
+				SUPPORTED_PLATFORMS = "iphoneos iphonesimulator";
+				SWIFT_APPROACHABLE_CONCURRENCY = YES;
+				SWIFT_COMPILATION_MODE = wholemodule;
+				SWIFT_DEFAULT_ACTOR_ISOLATION = MainActor;
+				SWIFT_EMIT_LOC_STRINGS = YES;
+				SWIFT_UPCOMING_FEATURE_MEMBER_IMPORT_VISIBILITY = YES;
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+			};
+			name = Release;
+		};
+		A6F5B386D701C1932410124E /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
+				CODE_SIGN_ENTITLEMENTS = CodippyWidgets/CodippyWidgets.entitlements;
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1;
+				DEBUG_INFORMATION_FORMAT = dwarf;
+				DEVELOPMENT_TEAM = A954YC526C;
+				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_FILE = CodippyWidgets/Info.plist;
+				INFOPLIST_KEY_CFBundleDisplayName = Codippy;
+				INFOPLIST_KEY_NSHumanReadableCopyright = "";
+				IPHONEOS_DEPLOYMENT_TARGET = 26.5;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+					"@executable_path/../../Frameworks",
+				);
+				LOCALIZATION_PREFERS_STRING_CATALOGS = YES;
+				MARKETING_VERSION = 1.1;
+				PRODUCT_BUNDLE_IDENTIFIER = com.wilish.codippy.widgets;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SDKROOT = iphoneos;
+				SKIP_INSTALL = YES;
+				STRING_CATALOG_GENERATE_SYMBOLS = YES;
+				SUPPORTED_PLATFORMS = "iphoneos iphonesimulator";
+				SWIFT_ACTIVE_COMPILATION_CONDITIONS = "DEBUG $(inherited)";
+				SWIFT_APPROACHABLE_CONCURRENCY = YES;
+				SWIFT_DEFAULT_ACTOR_ISOLATION = MainActor;
+				SWIFT_EMIT_LOC_STRINGS = YES;
+				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
+				SWIFT_UPCOMING_FEATURE_MEMBER_IMPORT_VISIBILITY = YES;
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+			};
+			name = Debug;
+		};
+		D5B46BF5A38F30072D73D41C /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1;
+				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
+				DEVELOPMENT_TEAM = A954YC526C;
+				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_FILE = CodippyShare/Info.plist;
+				INFOPLIST_KEY_CFBundleDisplayName = Codippy;
+				INFOPLIST_KEY_NSHumanReadableCopyright = "";
+				IPHONEOS_DEPLOYMENT_TARGET = 26.5;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+					"@executable_path/../../Frameworks",
+				);
+				LOCALIZATION_PREFERS_STRING_CATALOGS = YES;
+				MARKETING_VERSION = 1.1;
+				PRODUCT_BUNDLE_IDENTIFIER = com.wilish.codippy.share;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SDKROOT = iphoneos;
+				SKIP_INSTALL = YES;
+				STRING_CATALOG_GENERATE_SYMBOLS = YES;
+				SUPPORTED_PLATFORMS = "iphoneos iphonesimulator";
+				SWIFT_APPROACHABLE_CONCURRENCY = YES;
+				SWIFT_COMPILATION_MODE = wholemodule;
 				SWIFT_DEFAULT_ACTOR_ISOLATION = MainActor;
 				SWIFT_EMIT_LOC_STRINGS = YES;
 				SWIFT_UPCOMING_FEATURE_MEMBER_IMPORT_VISIBILITY = YES;
@@ -357,6 +724,24 @@
 			buildConfigurations = (
 				2C34EBED3042C9D6004423F8 /* Debug */,
 				2C34EBEE3042C9D6004423F8 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		C21E0A0152595E17C467739C /* Build configuration list for PBXNativeTarget "CodippyShare" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				D5B46BF5A38F30072D73D41C /* Release */,
+				124C5DDEEBF9B5AA5770701B /* Debug */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		EE8C6F69CAC179614A8200FB /* Build configuration list for PBXNativeTarget "CodippyWidgets" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				335166B63FB531DB73C62479 /* Release */,
+				A6F5B386D701C1932410124E /* Debug */,
 			);
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;

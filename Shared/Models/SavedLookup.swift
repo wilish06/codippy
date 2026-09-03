@@ -16,6 +16,7 @@ final class SavedLookup {
     var longitude: Double?
     var neighborhood: String?
     var street: String?
+    var province: String?
     var timestamp: Date
     var isFavorite: Bool
 
@@ -28,6 +29,7 @@ final class SavedLookup {
         self.longitude = place.longitude
         self.neighborhood = place.neighborhood
         self.street = place.street
+        self.province = place.province
         self.timestamp = timestamp
         self.isFavorite = isFavorite
     }
@@ -41,7 +43,8 @@ final class SavedLookup {
             latitude: latitude,
             longitude: longitude,
             neighborhood: neighborhood,
-            street: street
+            street: street,
+            province: province
         )
     }
 }
