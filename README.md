@@ -1,6 +1,6 @@
 # Codippy 📮
 
-App SwiftUI multiplataforma (iPhone, iPad, Mac) para buscar códigos postales.
+App SwiftUI para iPhone y iPad para buscar códigos postales.
 
 ## Qué hace
 
@@ -20,16 +20,15 @@ App SwiftUI multiplataforma (iPhone, iPad, Mac) para buscar códigos postales.
 
 - **Esquema de URL** `codippy://`: `codippy://search?q=28001&country=ES`, `codippy://smart?text=…` (texto libre con una dirección) y `codippy://locate`.
 - **Atajos y Siri** (App Intents): "Buscar en Codippy", "Obtener código postal" (devuelve el código como texto, sin abrir la app) y "Mi código postal".
-- **Widgets** (iOS, target `CodippyWidgets`): "Mi código postal" (ubicación actual; tamaños pequeño, mediano y de pantalla bloqueada) y "Favoritos" (los favoritos se publican en el App Group `group.com.wilish.codippy` vía `FavoritesSync`).
-- **Extensión de compartir** (iOS, target `CodippyShare`): selecciona una dirección en cualquier app → Compartir → Codippy; muestra los códigos ahí mismo y permite abrir la app.
-- **macOS**: búsqueda rápida desde la **barra de menús** (desactivable en Ajustes) y servicio "Buscar código postal con Codippy" en el menú contextual de cualquier texto seleccionado.
+- **Widgets** (target `CodippyWidgets`): "Mi código postal" (ubicación actual; tamaños pequeño, mediano y de pantalla bloqueada) y "Favoritos" (los favoritos se publican en el App Group `group.com.wilish.codippy` vía `FavoritesSync`).
+- **Extensión de compartir** (target `CodippyShare`): selecciona una dirección en cualquier app → Compartir → Codippy; muestra los códigos ahí mismo y permite abrir la app.
 
 ## Funciones con IA (on-device, sin red ni coste)
 
 Usan el modelo de **Apple Foundation Models** (requiere Apple Intelligence activado); si no está disponible, degradan con elegancia:
 
 - **Pegar dirección** ✨: pega cualquier texto desordenado (un email, un WhatsApp…) y la IA extrae calle, ciudad, código postal y país, y lanza la búsqueda. Sin IA, el texto aplanado va directo al geocoder de Apple.
-- **Escanear dirección** 📷: cámara en vivo (VisionKit, iPhone/iPad) o una foto/captura (Vision OCR, todas las plataformas) de un sobre o etiqueta; el texto reconocido pasa por el mismo extractor de IA.
+- **Escanear dirección** 📷: cámara en vivo (VisionKit) o una foto/captura (Vision OCR) de un sobre o etiqueta; el texto reconocido pasa por el mismo extractor de IA.
 
 ## Cómo funciona la búsqueda
 
@@ -43,7 +42,7 @@ Usan el modelo de **Apple Foundation Models** (requiere Apple Intelligence activ
 
 - `codippy/`: app (vistas, intents, catálogos de cadenas).
 - `Shared/`: modelos, servicios y tema, compilados también en las extensiones.
-- `CodippyShare/`, `CodippyWidgets/`: extensiones de iOS.
+- `CodippyShare/`, `CodippyWidgets/`: extensiones.
 - `docs/`: web (GitHub Pages) con soporte, privacidad y `datasets/` (manifiesto + TSV comprimidos para la descarga offline).
 
 ## Añadir un dataset offline (CSV/TSV)

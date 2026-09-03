@@ -24,23 +24,5 @@
 		<key>UIImageRespectsSafeAreaInsets</key>
 		<true/>
 	</dict>
-	<key>NSServices</key>
-	<array>
-		<dict>
-			<key>NSMenuItem</key>
-			<dict>
-				<key>default</key>
-				<string>Buscar código postal con Codippy</string>
-			</dict>
-			<key>NSMessage</key>
-			<string>lookupPostalCode</string>
-			<key>NSPortName</key>
-			<string>codippy</string>
-			<key>NSSendTypes</key>
-			<array>
-				<string>NSStringPboardType</string>
-			</array>
-		</dict>
-	</array>
 </dict>
 </plist>
